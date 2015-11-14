@@ -5,6 +5,13 @@
 !.gitignore
 !.gitattributes
 !src/**
+!gradle/**
+!build.gradle
+!gradlew
+!gradlew.bat
 
 # ...even if they are in subdirectories
 !*/
+
+#eclipse want that
+/bin/

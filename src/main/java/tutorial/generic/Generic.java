@@ -29,8 +29,6 @@ public class Generic {
 	public static Block genericDirt;
 	public static Block genericOre;
 
-	ItemStack cobbleStack = new ItemStack(Blocks.cobblestone);
-
 	@Instance(value = "generic")
 	public static Generic instance;
 
@@ -45,8 +43,8 @@ public class Generic {
 		// Create objects
 		genericDirt = new GenericBlock(Material.ground);
 		genericOre = new GenericOre(Material.rock);
-		genericWand = new GenericItem().setUnlocalizedName("genericWand");
-		genericIngot = new GenericItem().setMaxStackSize(16).setUnlocalizedName("genericIngot");
+		genericWand = new GenericWand();
+		genericIngot = new GenericIngot();
 
 		// Texturing
 		genericDirt.setBlockTextureName("generic:genericDirt");
@@ -54,18 +52,23 @@ public class Generic {
 		genericWand.setTextureName("generic:genericWand");
 		genericIngot.setTextureName("generic:genericIngot");
 
-		// Add recipes
-		GameRegistry.addShapelessRecipe(new ItemStack(genericWand, 2), new ItemStack(genericIngot), new ItemStack(genericIngot), new ItemStack(genericIngot));
-
-		GameRegistry.addRecipe(new ItemStack(genericOre,10), "xxx", "xyx", "xxx", 'x', genericIngot, 'y', genericWand);
-		
-		GameRegistry.addSmelting(Blocks.air, new ItemStack(genericOre,2), 25f);
-
 		// Finalizing
 		GameRegistry.registerBlock(genericDirt, "genericDirt");
 		GameRegistry.registerBlock(genericOre, "genericOre");
 		GameRegistry.registerItem(genericWand, "genericItem");
 		GameRegistry.registerItem(genericIngot, "genericIngot");
+		
+		// Add recipes
+		GameRegistry.addShapelessRecipe(new ItemStack(genericWand, 2), new ItemStack(genericIngot), new ItemStack(genericIngot), new ItemStack(genericIngot));
+
+		GameRegistry.addRecipe(new ItemStack(genericOre), 
+				"xxx", 
+				"xyx", 
+				"xxx", 
+				'x', new ItemStack(genericIngot), 
+				'y', new ItemStack(genericWand));
+		
+		GameRegistry.addSmelting(genericIngot, new ItemStack(Blocks.packed_ice), 1000f);
 
 		// proxy.registerRenderers();
 	}
