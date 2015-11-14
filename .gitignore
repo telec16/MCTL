@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!.gitattributes
+!src/**
+
+# ...even if they are in subdirectories
+!*/
