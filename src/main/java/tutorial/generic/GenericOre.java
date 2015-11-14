@@ -24,13 +24,11 @@ public class GenericOre extends Block {
 		return Generic.genericIngot;
 	}
 
-    public int quantityDroppedWithBonus(int par1, Random random)
-    {
-        return quantityDropped(random) + random.nextInt(par1 + 1);
+	public int quantityDroppedWithBonus(int par1, Random random) {
+		return quantityDropped(random) + random.nextInt(par1 + 1);
 	}
 
-    public int quantityDropped(Random random)
-    {
-        return 1 + random.nextInt(2);
-    }
+	public int quantityDropped(Random random) {
+		return 1 + random.nextInt(2);
+	}
 }

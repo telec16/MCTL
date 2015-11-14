@@ -57,18 +57,17 @@ public class Generic {
 		GameRegistry.registerBlock(genericOre, "genericOre");
 		GameRegistry.registerItem(genericWand, "genericItem");
 		GameRegistry.registerItem(genericIngot, "genericIngot");
-		
-		// Add recipes
-		GameRegistry.addShapelessRecipe(new ItemStack(genericWand, 2), new ItemStack(genericIngot), new ItemStack(genericIngot), new ItemStack(genericIngot));
 
-		GameRegistry.addRecipe(new ItemStack(genericOre), 
-				"xxx", 
-				"xyx", 
-				"xxx", 
-				'x', new ItemStack(genericIngot), 
-				'y', new ItemStack(genericWand));
-		
-		GameRegistry.addSmelting(genericIngot, new ItemStack(Blocks.packed_ice), 1000f);
+		// Add recipes
+		GameRegistry.addShapelessRecipe(new ItemStack(genericDirt, 16), new ItemStack(Blocks.dirt));
+
+		GameRegistry.addShapelessRecipe(new ItemStack(genericWand, 2), new ItemStack(genericIngot),
+				new ItemStack(genericIngot), new ItemStack(genericIngot));
+
+		GameRegistry.addRecipe(new ItemStack(genericOre), "xxx", "xyx", "xxx", 'x', new ItemStack(genericIngot), 'y',
+				new ItemStack(genericWand));
+
+		GameRegistry.addSmelting(genericIngot, new ItemStack(Blocks.packed_ice), 1.0f);
 
 		// proxy.registerRenderers();
 	}

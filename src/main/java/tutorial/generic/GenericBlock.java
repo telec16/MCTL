@@ -13,8 +13,8 @@ public class GenericBlock extends Block {
 		setBlockName("genericDirt");
 		setCreativeTab(CreativeTabs.tabBlock);
 		setHarvestLevel("shovel", 0);
-		
-		//minX,minY, minZ,maxX,maxY,maxZ
+
+		// minX,minY, minZ,maxX,maxY,maxZ
 		setBlockBounds(0.0F, 0.0F, 0.3F, 1F, 0.2F, 0.7F);
 		setLightOpacity(0);
 		// genericDirt.;
