@@ -11,7 +11,6 @@ public class GenericBlock extends Block {
 		setHardness(0.5F);
 		setStepSound(Block.soundTypeAnvil);
 		setBlockName("genericDirt");
-		setCreativeTab(CreativeTabs.tabBlock);
 		setHarvestLevel("shovel", 0);
 
 		// minX,minY, minZ,maxX,maxY,maxZ

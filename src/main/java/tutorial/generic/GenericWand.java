@@ -14,7 +14,6 @@ public class GenericWand extends Item {
 	public GenericWand() {
 		maxStackSize = 1;
 		setMaxDamage(32);
-		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName("genericWand");
 	}
 

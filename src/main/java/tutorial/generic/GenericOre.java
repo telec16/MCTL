@@ -15,7 +15,6 @@ public class GenericOre extends Block {
 		setHardness(4.0F); // 33% harder than diamond
 		setStepSound(Block.soundTypeMetal);
 		setBlockName("genericOre"); // changed in 1.7
-		setCreativeTab(CreativeTabs.tabBlock);
 		setHarvestLevel("pickaxe", 3);
 	}
 

@@ -1,7 +1,5 @@
 package tutorial.generic;
 
-// This Import list will grow longer with each additional tutorial.
-// It's not pruned between full class postings, unlike other tutorial code.
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -20,41 +18,59 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "generic", name = "Generic", version = "0.0.0")
+@Mod(modid = Generic.MODID, name = "Generic", version = Generic.VERSION)
 public class Generic {
+	public static final String MODID = "generic";
+	public static final String VERSION = "0.0.0";
 	// See Basic items tutorial for Generic Ingot
 	public static Item genericIngot;
 	public static Item genericWand;
 
 	public static Block genericDirt;
 	public static Block genericOre;
+	public static Block genericWire;
 
-	@Instance(value = "generic")
+	public static CreativeTabs genericTab = new CreativeTabs("Generic Tab") {
+		@Override
+		public Item getTabIconItem() {
+
+			return genericIngot;
+		}
+	};
+
+	@Instance(MODID)
 	public static Generic instance;
 
-	/*
-	 * @SidedProxy(clientSide="tutorial.generic.client.ClientProxy",
-	 * serverSide="tutorial.generic.CommonProxy") public static CommonProxy
-	 * proxy;
-	 */
+	@SidedProxy(clientSide = "tutorial.generic.client.ClientProxy", serverSide = "tutorial.generic.CommonProxy")
+	public static CommonProxy proxy;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		// Create objects
 		genericDirt = new GenericBlock(Material.ground);
 		genericOre = new GenericOre(Material.rock);
+		genericWire = new GenericWire(Material.cake);
 		genericWand = new GenericWand();
 		genericIngot = new GenericIngot();
 
 		// Texturing
 		genericDirt.setBlockTextureName("generic:genericDirt");
 		genericOre.setBlockTextureName("generic:genericOre");
+		genericWire.setBlockTextureName("generic:wire.png");
 		genericWand.setTextureName("generic:genericWand");
 		genericIngot.setTextureName("generic:genericIngot");
+		
+		// Adding to tabs
+		genericDirt.setCreativeTab(genericTab);
+		genericOre.setCreativeTab(genericTab);
+		genericWand.setCreativeTab(genericTab);
+		genericIngot.setCreativeTab(genericTab);
+		genericWire.setCreativeTab(genericTab);
 
 		// Finalizing
 		GameRegistry.registerBlock(genericDirt, "genericDirt");
 		GameRegistry.registerBlock(genericOre, "genericOre");
+		GameRegistry.registerBlock(genericWire, "genericWire");
 		GameRegistry.registerItem(genericWand, "genericItem");
 		GameRegistry.registerItem(genericIngot, "genericIngot");
 
@@ -69,7 +85,6 @@ public class Generic {
 
 		GameRegistry.addSmelting(genericIngot, new ItemStack(Blocks.packed_ice), 1.0f);
 
-		// proxy.registerRenderers();
 	}
 
 	@EventHandler
@@ -80,6 +95,8 @@ public class Generic {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		proxy.registerRenderers();
+		proxy.init();
 	}
 
 	@EventHandler

@@ -10,7 +10,6 @@ public class GenericIngot extends Item {
 
 	public GenericIngot() {
 		maxStackSize = 16;
-		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName("genericIngot");
 	}
 
